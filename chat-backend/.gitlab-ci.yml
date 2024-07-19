@@ -1,0 +1,10 @@
+stages:
+  - build
+  - upload
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build .
+

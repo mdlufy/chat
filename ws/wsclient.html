@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WebSocket Server</title>
+</head>
+<body>
+<h1>Client a</h1>
+<script>
+    const ws = new WebSocket("ws://localhost:3000");
+    // Обработчик события при открытии соединения
+    ws.addEventListener("open", (event) => {
+        console.log("Соединение установлено");
+        let newmes = {
+                    event: "connection",
+                    id: 'a',
+                    chats: [2,5]
+                };
+        ws.send(JSON.stringify(newmes))
+    });
+
+    // Обработчик события при получении сообщения от сервера
+    ws.addEventListener("message", (event) => {
+        const message = event.data;
+        console.log("Получено сообщение: " + message);
+    });
+
+</script>
+</body>
+</html>
